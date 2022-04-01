@@ -23,6 +23,8 @@ namespace demo_consoleEventSourcing
 
         private static void BuildMenu()
         {
+            Console.Clear();
+
             AnsiConsole.Write(new FigletText("Welcome to Event Sourcing demo").Centered().Color(Color.Violet));
 
             Console.WriteLine();
@@ -43,49 +45,49 @@ namespace demo_consoleEventSourcing
                     "8 - Exit"
                 })).Substring(0, 1);
 
-            var operationContext = new OperationContext();
+            var operationContext = new UIOperationContext();
 
             switch (option)
             {
                 case RegisterProduct:
                     {
-                        operationContext.SetOperation(new RegisterProductOperation());
+                        operationContext.SetOperation(new UIRegisterProductOperation());
 
                         break;
                     }
                 case SeeProducts:
                     {
-                        operationContext.SetOperation(new SeeProductsOperation());
+                        operationContext.SetOperation(new UISeeProductsOperation());
 
                         break;
                     }
                 case IncreaseProduct:
                     {
-                        operationContext.SetOperation(new IncreaseProductAmountOperation());
+                        operationContext.SetOperation(new UIIncreaseProductAmountOperation());
 
                         break;
                     }
                 case DecreaseProduct:
                     {
-                        operationContext.SetOperation(new DecreaseProductAmountOperation());
+                        operationContext.SetOperation(new UIDecreaseProductAmountOperation());
 
                         break;
                     }
                 case AdjustProductAmount:
                     {
-                        operationContext.SetOperation(new AdjustProductAmountOperation());
+                        operationContext.SetOperation(new UIAdjustProductAmountOperation());
 
                         break;
                     }
                 case GetProductAmount:
                     {
-                        operationContext.SetOperation(new GetProductAmountOperation());
+                        operationContext.SetOperation(new UIGetProductAmountOperation());
 
                         break;
                     }
                 case GetProductEvents:
                     {
-                        operationContext.SetOperation(new GetProductEventOperation());
+                        operationContext.SetOperation(new UIGetProductEventOperation());
 
                         break;
                     }
@@ -98,6 +100,8 @@ namespace demo_consoleEventSourcing
             }
 
             operationContext.ExecuteOperation();
+
+            BuildMenu();
 
             Console.ReadKey();
         }
