@@ -8,9 +8,9 @@ namespace demo_consoleEventSourcing.Services
     {
         private readonly ProductRepository _productRepository;
 
-        public ProductService()
+        public ProductService(ProductRepository productRepository)
         {
-            _productRepository = new ProductRepository();
+            _productRepository = productRepository;
         }
 
         public Product GetProduct(string code)
@@ -20,6 +20,13 @@ namespace demo_consoleEventSourcing.Services
 
         public void CreateProduct(string code, string description)
         {
+            var product = GetProduct(code);
+
+            if (product != null)
+            {
+                throw new ProductAlreadyExistsException($"A product with code {code} already exists!");
+            }
+
             _productRepository.CreateProduct(new Product(code, description));
         }
 

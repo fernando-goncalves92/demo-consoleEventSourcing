@@ -6,7 +6,7 @@ namespace demo_consoleEventSourcing.Operations
 {
     public class UIGetProductAmountOperation : IUIOperation
     {
-        private ProductService _productService;
+        private readonly ProductService _productService;
 
         public UIGetProductAmountOperation(ProductService productService)
         {

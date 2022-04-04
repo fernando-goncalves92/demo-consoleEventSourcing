@@ -1,4 +1,5 @@
-﻿using demo_consoleEventSourcing.Interfaces;
+﻿using demo_consoleEventSourcing.Infraestructure;
+using demo_consoleEventSourcing.Interfaces;
 using demo_consoleEventSourcing.Services;
 using Spectre.Console;
 
@@ -6,7 +7,7 @@ namespace demo_consoleEventSourcing.Operations
 {
     public class UISeeProductsOperation : IUIOperation
     {
-        private ProductService _productService;
+        private readonly ProductService _productService;
 
         public UISeeProductsOperation(ProductService productService)
         {
