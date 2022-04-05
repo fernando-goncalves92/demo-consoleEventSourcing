@@ -5,11 +5,11 @@ using System;
 
 namespace demo_consoleEventSourcing.Operations
 {
-    public class UIGetProductEventOperation : IUIOperation
+    public class UIViewProductEventOperation : IUIOperation
     {
         private readonly ProductService _productService;
 
-        public UIGetProductEventOperation(ProductService productService)
+        public UIViewProductEventOperation(ProductService productService)
         {
             _productService = productService;
         }
@@ -33,7 +33,7 @@ namespace demo_consoleEventSourcing.Operations
 
                 foreach (var @event in product.GetEvents())
                 {   
-                    table.AddRow(@event.ToString());
+                    table.AddRow($"- {@event}");
                 }
 
                 AnsiConsole.Write(table);

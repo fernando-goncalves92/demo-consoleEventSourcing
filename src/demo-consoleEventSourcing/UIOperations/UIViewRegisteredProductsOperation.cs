@@ -6,11 +6,11 @@ using System;
 
 namespace demo_consoleEventSourcing.Operations
 {
-    public class UISeeProductsOperation : IUIOperation
+    public class UIViewRegisteredProductsOperation : IUIOperation
     {
         private readonly ProductService _productService;
 
-        public UISeeProductsOperation(ProductService productService)
+        public UIViewRegisteredProductsOperation(ProductService productService)
         {
             _productService = productService;
         }
@@ -19,7 +19,7 @@ namespace demo_consoleEventSourcing.Operations
         {
             try
             {
-                AnsiConsole.Write(new FigletText("Products").Centered());
+                AnsiConsole.Write(new FigletText("Registered Products").Centered());
                 Console.WriteLine();
                 Console.WriteLine();
 

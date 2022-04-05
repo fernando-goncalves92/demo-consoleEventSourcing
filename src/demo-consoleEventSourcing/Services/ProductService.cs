@@ -26,15 +26,6 @@ namespace demo_consoleEventSourcing.Services
             return _productRepository.GetProducts(limit);
         }
 
-        public List<IEvent> GetProductEvents(string code)
-        {
-            var product = GetProduct(code);
-
-            ThrowProductDoesNotExistsExceptionIfNull(product);
-
-            return product.GetEvents();
-        }
-
         public int GetProductAmount(string code)
         {
             var product = GetProduct(code);
