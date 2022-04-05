@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using demo_consoleEventSourcing.Domain;
 
 namespace demo_consoleEventSourcing.Infraestructure
@@ -10,6 +11,16 @@ namespace demo_consoleEventSourcing.Infraestructure
         public Product GetProduct(string code)
         {
             return _inMemoryProducts.ContainsKey(code) ? _inMemoryProducts[code] : null;
+        }
+
+        public List<Product> GetProducts(int limit)
+        {
+            if (limit == 0)
+            {
+                limit = _inMemoryProducts.Count;
+            }
+
+            return _inMemoryProducts.Select(p => p.Value).Take(limit).ToList();
         }
 
         public void CreateProduct(Product product)

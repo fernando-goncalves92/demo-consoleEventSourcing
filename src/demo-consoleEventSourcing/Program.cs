@@ -61,7 +61,6 @@ namespace demo_consoleEventSourcing
 
                 string option = AnsiConsole.Prompt(new SelectionPrompt<string>()
                     .Title("[bold yellow]Choose one operation[/]")
-                    .MoreChoicesText("[grey](Move up and down to reveal more fruits)[/]")
                     .AddChoices(new[]
                     {
                         "1 - Register product",
@@ -72,7 +71,8 @@ namespace demo_consoleEventSourcing
                         "6 - Get product amount",
                         "7 - Get product events",
                         "8 - Exit"
-                    })).Substring(0, 1);
+                    }))
+                    .Substring(0, 1);
 
                 switch (option)
                 {

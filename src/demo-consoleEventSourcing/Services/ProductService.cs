@@ -1,6 +1,9 @@
 ﻿using demo_consoleEventSourcing.Domain;
 using demo_consoleEventSourcing.Exceptions;
 using demo_consoleEventSourcing.Infraestructure;
+using demo_consoleEventSourcing.Interfaces;
+using System;
+using System.Collections.Generic;
 
 namespace demo_consoleEventSourcing.Services
 {
@@ -18,6 +21,29 @@ namespace demo_consoleEventSourcing.Services
             return _productRepository.GetProduct(code);
         }
 
+        public List<Product> GetProducts(int limit)
+        {
+            return _productRepository.GetProducts(limit);
+        }
+
+        public List<IEvent> GetProductEvents(string code)
+        {
+            var product = GetProduct(code);
+
+            ThrowProductDoesNotExistsExceptionIfNull(product);
+
+            return product.GetEvents();
+        }
+
+        public int GetProductAmount(string code)
+        {
+            var product = GetProduct(code);
+
+            ThrowProductDoesNotExistsExceptionIfNull(product);
+
+            return product.Amount;
+        }
+
         public void CreateProduct(string code, string description)
         {
             var product = GetProduct(code);
@@ -32,6 +58,11 @@ namespace demo_consoleEventSourcing.Services
 
         public void IncreaseAmount(string code, int amount)
         {
+            if (amount <= 0)
+            { 
+                throw new InvalidOperationException("It's not possible to increase a negative amount!");
+            }
+
             var product = GetProduct(code);
 
             ThrowProductDoesNotExistsExceptionIfNull(product);
@@ -43,6 +74,11 @@ namespace demo_consoleEventSourcing.Services
 
         public void DecreaseAmount(string code, int amount)
         {
+            if (amount <= 0)
+            {
+                throw new InvalidOperationException("It's not possible to decrease a negative amount!");
+            }
+
             var product = GetProduct(code);
 
             ThrowProductDoesNotExistsExceptionIfNull(product);
@@ -54,6 +90,11 @@ namespace demo_consoleEventSourcing.Services
 
         public void AdjustAmount(string code, int amount, string reasonAdjust)
         {
+            if (amount <= 0)
+            {
+                throw new InvalidOperationException("It's not possible to decrease a negative amount!");
+            }
+
             var product = GetProduct(code);
 
             ThrowProductDoesNotExistsExceptionIfNull(product);
