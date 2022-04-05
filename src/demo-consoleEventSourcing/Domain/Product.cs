@@ -13,7 +13,7 @@ namespace demo_consoleEventSourcing.Domain
         public DateTime RegisterAt { get; private set; }
         public DateTime UpdatedAt { get; private set; }
 
-        private List<IEvent> _events = new();
+        private readonly List<IEvent> _events = new();
 
         public Product(string code, string description)
         {

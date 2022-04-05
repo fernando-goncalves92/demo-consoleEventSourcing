@@ -35,7 +35,7 @@ namespace demo_consoleEventSourcing.Operations
                 table.AddColumn(new TableColumn("[yellow]Updated At[/]").RightAligned());
                 table.Border(TableBorder.Ascii);
                 table.BorderColor(Color.Blue3);
-
+                
                 foreach (var product in products)
                 {
                     table.AddRow(product.Code, 
