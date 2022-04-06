@@ -23,9 +23,7 @@ namespace demo_consoleEventSourcing.Operations
                 Console.WriteLine();
 
                 string code = AnsiConsole.Ask<string>("Inform the [green]product code:[/] ");
-                Console.WriteLine();
                 var product = _productService.GetProduct(code);
-
                 var table = new Table();
                 table.AddColumn("[yellow]Event[/]");
                 table.Border(TableBorder.Markdown);
@@ -45,8 +43,6 @@ namespace demo_consoleEventSourcing.Operations
                 AnsiConsole.WriteException(e);
             }
 
-            Console.WriteLine();
-            Console.WriteLine();
             AnsiConsole.Write(new Markup("[yellow]Press any key to go back to main menu...[/]"));
 
             Console.ReadKey();

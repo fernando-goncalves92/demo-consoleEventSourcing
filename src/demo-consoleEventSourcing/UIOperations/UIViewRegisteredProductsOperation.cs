@@ -24,9 +24,7 @@ namespace demo_consoleEventSourcing.Operations
                 Console.WriteLine();
 
                 int amountToSee = AnsiConsole.Ask<int>("Inform how many products you want to see in the table ([yellow]0 to see all of them[/]): ");
-                Console.WriteLine();
                 var products = _productService.GetProducts(amountToSee);
-
                 var table = new Table();
                 table.AddColumn("[yellow]Code[/]");
                 table.AddColumn("[yellow]Description[/]");
@@ -45,6 +43,7 @@ namespace demo_consoleEventSourcing.Operations
                         product.UpdatedAt.ToString("yyyy-MM-dd HH:mm:ss"));
                 }
                 
+                Console.WriteLine();
                 AnsiConsole.Write(table);
             }
             catch (Exception e)
@@ -54,7 +53,6 @@ namespace demo_consoleEventSourcing.Operations
                 AnsiConsole.WriteException(e);
             }
 
-            Console.WriteLine();
             Console.WriteLine();
             AnsiConsole.Write(new Markup("[yellow]Press any key to go back to main menu...[/]"));
 
