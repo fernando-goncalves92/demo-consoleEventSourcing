@@ -11,6 +11,3 @@ This is a simple console application to demonstrate the basics concepts of Event
 
 The layout was built using the [**Spectre Console**](https://spectreconsole.net) nuget package. 
 
-## Give a Star! :star:
-If you liked the project give a star 😉
-
