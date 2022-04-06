@@ -1,5 +1,6 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/fernando-goncalves92/demo-consoleEventSourcing) 
 ![Net Version](https://img.shields.io/badge/.NET-6-blueviolet)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 What is this?
 =============
